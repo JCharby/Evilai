@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Electric Dreams</title>
+  <style media="screen">
+    /* *{border:1px solid red;} */
+    body {
+      font-family: monospace;
+      background-color: #333;
+      color: #0f0;
+      font-size: 18px;
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      margin-left: 3em;
+    }
+
+    #computer {
+      background-color: black;
+      border: 1px solid green;
+      width: 80ch;
+      padding: 1em;
+    }
+
+    #human {
+      background-color: black;
+      border: 1px solid green;
+      width: 80ch;
+      padding: 1em;
+      font-size: inherit;
+      font-family: inherit;
+      color: white;
+    }
+
+    button {
+      width: 10ch;
+      margin: 1em 0 0 2em;
+      font-size: inherit;
+      font-family: inherit;
+      border-radius: 14px;
+    }
+    .displayNone{display:none;}
+  </style>
+</head>
+
+<body>
+  <h1>Electric Dreams</h1>
+  <p id="computer">Hi, how are you today?</p>
+  <input type="text" placeholder="Type your response" id="human">
+  <button type="button" name="button" id="button">Enter</button>
+
+  <script type="text/javascript">
+    //fun
+    //grab all the elements we need to control
+    let computer = document.querySelector('#computer')
+    let human = document.querySelector('#human')
+    let button = document.querySelector('#button')
+    human.focus()
+
+    //other vars we will need
+    let computerMsg = ""
+    let humanMsg = ""
+
+    let genericResponses = ['first', 'second', 'third', ' fourth']
+    let newResponse
+    let responseNumber
+
+    //set up the event listeners
+    button.addEventListener('click', clickHandler, false)
+    window.addEventListener('keydown', keydownHandler, false)
+    //set up handler functions
+    function clickHandler() {
+      playGame()
+    }
+
+    function keydownHandler(evt) {
+      if (evt.keyCode === 13) {
+        playGame()
+      }
+    }
+    //time for the game logic
+    function playGame() {
+      if (genericResponses.length > 0){
+        newResponse = Math.floor(Math.random()*genericResponses.length)
+        // console.log(newResponse);
+        // computerMsg = "Dont touch me."
+        computerMsg = genericResponses[newResponse]
+        humanMsg = ""
+
+        genericResponses.splice(newResponse, 1)
+        console.log(genericResponses)
+
+        // computer.textContent = computerMsg
+        human.value = humanMsg
+      } else {
+        computerMsg = "I am donw with you. Leave now."
+        setTimeout(killGame, 2000)
+      }
+      computer.textContent = computerMsg
+
+    }
+
+    function killGame(){
+      location.assign("https://i.ytimg.com/vi/6AKuD8gzlso/maxresdefault.jpg")
+      button.className = 'displayNone'
+      human.className = 'displayNone'
+    }
+  </script>
+</body>
+
+</html>
