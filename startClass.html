@@ -44,7 +44,10 @@
       font-family: inherit;
       border-radius: 14px;
     }
-    .displayNone{display:none;}
+
+    .displayNone {
+      display: none;
+    }
   </style>
 </head>
 
@@ -69,6 +72,7 @@
     let genericResponses = ['first', 'second', 'third', ' fourth']
     let newResponse
     let responseNumber
+    let questionTrack = "mood"
 
     //set up the event listeners
     button.addEventListener('click', clickHandler, false)
@@ -85,31 +89,117 @@
     }
     //time for the game logic
     function playGame() {
-      if (genericResponses.length > 0){
-        newResponse = Math.floor(Math.random()*genericResponses.length)
+      humanMsg = (human.value).toLowerCase()
+      //analyze the human input
+      // if (questionTrack=="mood"){
+      //
+      // }else if (questionTrack=="sick"){
+      //
+      // }
+
+      switch (questionTrack) {
+        case "mood":
+          moodAnalysis()
+          break
+        case "sick":
+          sickAnalysis()
+          break
+        case "hungry":
+          hungryAnalysis()
+          break
+        case "virus":
+          virusAnalysis()
+          break
+        case "sad":
+          sadAnalysis()
+          break
+
+        default:
+          genericResponse()
+          break
+      }
+
+
+      computer.textContent = computerMsg
+      humanMsg = ""
+      human.value = humanMsg
+
+    } //end play game
+
+    function moodAnalysis() {
+      if (humanMsg.indexOf("good") != -1) {
+        computerMsg = "That is great. Are you Hungry?"
+        questionTrack = "hungry"
+      } else if (humanMsg.indexOf("bad") != -1) {
+        computerMsg = "oh no! Are you sick?"
+        questionTrack = "sick"
+      } else {
+        genericResponse()
+      }
+    } //end moodAnalysis
+
+    function hungryAnalysis() {
+      if (humanMsg.indexOf("yes") != -1) {
+        computerMsg = "Do you want a salad? Looks like you need a salad."
+        questionTrack = "salad"
+      } else if (humanMsg.indexOf("no") != -1) {
+        computerMsg = "I'm hungry, do you like apples?"
+        questionTrack = "apple"
+      } else {
+        genericResponse()
+      }
+    } //end hungryAnalysis
+
+    function sickAnalysis() {
+      if (humanMsg.indexOf("yes") != -1) {
+        computerMsg = "Do you have the Corona Virus? @_@"
+        questionTrack = "virus"
+      } else if (humanMsg.indexOf("no") != -1) {
+        computerMsg = "If you say so... are you sad?"
+        questionTrack = "sad"
+      } else {
+        genericResponse()
+      }
+    } //end sickAnalysis
+
+    function virusAnalysis() {
+      if (humanMsg.indexOf("yes") != -1) {
+        computerMsg = "Should i call an ambulance"
+        questionTrack = "virus"
+      } else if (humanMsg.indexOf("no") != -1) {
+        computerMsg = "are you sure?"
+        questionTrack = "sure"
+      } else {
+        genericResponse()
+      }
+    } //end sickAnalysis
+
+    function genericResponse() {
+      if (genericResponses.length > 0) {
+        newResponse = Math.floor(Math.random() * genericResponses.length)
         // console.log(newResponse);
         // computerMsg = "Dont touch me."
         computerMsg = genericResponses[newResponse]
-        humanMsg = ""
+        // humanMsg = ""
 
         genericResponses.splice(newResponse, 1)
-        console.log(genericResponses)
+        // console.log(genericResponses)
 
         // computer.textContent = computerMsg
-        human.value = humanMsg
+        // human.value = humanMsg
       } else {
         computerMsg = "I am donw with you. Leave now."
         setTimeout(killGame, 2000)
       }
-      computer.textContent = computerMsg
+    } // end genericResponse
 
-    }
 
-    function killGame(){
+
+    function killGame() {
       location.assign("https://i.ytimg.com/vi/6AKuD8gzlso/maxresdefault.jpg")
       button.className = 'displayNone'
       human.className = 'displayNone'
-    }
+    } //end kill game
   </script>
 </body>
 
