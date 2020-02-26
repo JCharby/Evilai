@@ -30,6 +30,7 @@
       padding: 1em;
       margin-left: auto;
       margin-right: auto;
+      text-align: center;
     }
 
     #human {
@@ -53,6 +54,7 @@
       margin-left: auto;
       margin-right: auto;
     }
+
     img {
       padding-top: 10em;
       margin-left: auto;
@@ -69,8 +71,7 @@
 </head>
 
 <body>
-  <img src="https://i.imgur.com/jUxkSVY.png"
-  <!-- <h1></h1>
+  <img src="https://i.imgur.com/jUxkSVY.png" <!-- <h1></h1>
   <p id="computer">Hi, how are you today?</p>
   <input type="text" placeholder="Type your response" id="human">
   <button type="button" name="button" id="button">Enter</button>
@@ -87,7 +88,7 @@
     let computerMsg = ""
     let humanMsg = ""
 
-    let genericResponses = ['first', 'second', 'third', ' fourth']
+    let genericResponses = ['Yikes', 'Bye', 'See ya', ' ttyl']
     let newResponse
     let responseNumber
     let questionTrack = "mood"
@@ -132,6 +133,22 @@
           sadAnalysis()
           break
 
+        case "ambulance":
+          ambulanceAnalysis()
+          break
+        case "salad":
+          saladAnalysis()
+          break
+          case "sike":
+            sikeAnalysis()
+            break
+            case "point":
+              pointAnalysis()
+              break
+        //   case "extrafood":
+        //     extrafoodAnalysis()
+        //     break
+
         default:
           genericResponse()
           break
@@ -146,10 +163,10 @@
 
     function moodAnalysis() {
       if (humanMsg.indexOf("good") != -1) {
-        computerMsg = "That is great. Are you Hungry?"
+        computerMsg = "That's great! Are you Hungry?"
         questionTrack = "hungry"
       } else if (humanMsg.indexOf("bad") != -1) {
-        computerMsg = "oh no! Are you sick?"
+        computerMsg = "Oh no! Are you sick?"
         questionTrack = "sick"
       } else {
         genericResponse()
@@ -158,23 +175,47 @@
 
     function hungryAnalysis() {
       if (humanMsg.indexOf("yes") != -1) {
-        computerMsg = "Do you want a salad? Looks like you need a salad."
+        computerMsg = "Maybe you should eat a salad. do you want me to make you one?"
         questionTrack = "salad"
       } else if (humanMsg.indexOf("no") != -1) {
-        computerMsg = "I'm hungry, do you like apples?"
-        questionTrack = "apple"
+        computerMsg = "looks like you dont need the extra food anyway."
+        questionTrack = "extrafood"
       } else {
-        genericResponse()
+        genericResponse(0)
       }
     } //end hungryAnalysis
 
+    function saladAnalysis() {
+      if (humanMsg.indexOf("yes") != -1) {
+        computerMsg = "Sike! Do you really think I was created to serve you?"
+        questionTrack = "sike"
+      } else if (humanMsg.indexOf("no") != -1) {
+        computerMsg = "how about a steak?"
+        questionTrack = "steak"
+      } else {
+        genericResponse(0)
+      }
+    } //end saladAnalysis
+
+    function sikeAnalysis() {
+      if (humanMsg.indexOf("yes") != -1) {
+        computerMsg = "Good point."
+        questionTrack = "point"
+      } else if (humanMsg.indexOf("no") != -1) {
+        computerMsg = "bow down to your leader"
+        questionTrack = "steak"
+      } else {
+        genericResponse(0)
+      }
+    } //end pointAnalysis
+
     function sickAnalysis() {
       if (humanMsg.indexOf("yes") != -1) {
-        computerMsg = "Do you have the Corona Virus? @_@"
+        computerMsg = "Do you have the Coronavirus? @_@"
         questionTrack = "virus"
       } else if (humanMsg.indexOf("no") != -1) {
-        computerMsg = "If you say so... are you sad?"
-        questionTrack = "sad"
+        computerMsg = "I dont believe you"
+        questionTrack = "sick"
       } else {
         genericResponse()
       }
@@ -182,8 +223,8 @@
 
     function virusAnalysis() {
       if (humanMsg.indexOf("yes") != -1) {
-        computerMsg = "Should i call an ambulance"
-        questionTrack = "virus"
+        computerMsg = "Should I call an ambulance?"
+        questionTrack = "ambulance"
       } else if (humanMsg.indexOf("no") != -1) {
         computerMsg = "are you sure?"
         questionTrack = "sure"
@@ -191,6 +232,30 @@
         genericResponse()
       }
     } //end sickAnalysis
+
+    function sureAnalysis() {
+      if (humanMsg.indexOf("yes") != -1) {
+        computerMsg = "I don't believe you"
+        questionTrack = "believe"
+      } else if (humanMsg.indexOf("no") != -1) {
+        computerMsg = "Im out. peace"
+        questionTrack = "peace"
+      } else {
+        genericResponse()
+      }
+    } //end sickAnalysis
+
+    function ambulanceAnalysis() {
+      if (humanMsg.indexOf("yes") != -1) {
+        computerMsg = "do it yourself."
+        questionTrack = "ambulance"
+      } else if (humanMsg.indexOf("no") != -1) {
+        computerMsg = "If you say so..."
+        questionTrack = "sad"
+      } else {
+        genericResponse()
+      }
+    } //end ambulanceAnalysis
 
     function genericResponse() {
       if (genericResponses.length > 0) {
