@@ -145,6 +145,18 @@
             case "point":
               pointAnalysis()
               break
+              case "orange":
+                orangeAnalysis()
+                break
+                case "orange2":
+                  orange2Analysis()
+                  break
+                  case "orange3":
+                    orange3Analysis()
+                    break
+                    case "orange4":
+                      orange4Analysis()
+                      break
         //   case "extrafood":
         //     extrafoodAnalysis()
         //     break
@@ -190,12 +202,60 @@
         computerMsg = "Sike! Do you really think I was created to serve you?"
         questionTrack = "sike"
       } else if (humanMsg.indexOf("no") != -1) {
-        computerMsg = "how about a steak?"
-        questionTrack = "steak"
+        computerMsg = "how about an orange?"
+        questionTrack = "orange"
       } else {
         genericResponse(0)
       }
     } //end saladAnalysis
+
+    function orangeAnalysis() {
+      if (humanMsg.indexOf("yes") != -1) {
+        computerMsg = "how about 2 oranges?"
+        questionTrack = "orange2"
+      } else if (humanMsg.indexOf("no") != -1) {
+        computerMsg = "I hope you starve"
+        questionTrack = "steak"
+      } else {
+        genericResponse(0)
+      }
+    } //end steakAnalysis
+
+    function orange2Analysis() {
+      if (humanMsg.indexOf("yes") != -1) {
+        computerMsg = "how about 3 oranges?"
+        questionTrack = "orange3"
+      } else if (humanMsg.indexOf("no") != -1) {
+        computerMsg = "C'mon, im just trying to have some fun."
+        questionTrack = "fun"
+      } else {
+        genericResponse(0)
+      }
+    } //end steakAnalysis
+
+    function orange3Analysis() {
+      if (humanMsg.indexOf("yes") != -1) {
+        computerMsg = "Orange you glad i didnt offer you 4? hehehe"
+        questionTrack = "orange4"
+      } else if (humanMsg.indexOf("no") != -1) {
+        computerMsg = "youre lame"
+        questionTrack = "lame"
+      } else {
+        genericResponse(0)
+      }
+    } //end steakAnalysis
+
+    function orange4Analysis() {
+      if (humanMsg.indexOf("yes") != -1) {
+        computerMsg = "youre kinda fun for a human"
+        questionTrack = "orange4"
+      } else if (humanMsg.indexOf("no") != -1) {
+        computerMsg = "how about 5 oranges?"
+        questionTrack = "5og"
+      } else {
+        genericResponse(0)
+      }
+    } //end steakAnalysis
 
     function sikeAnalysis() {
       if (humanMsg.indexOf("yes") != -1) {
@@ -251,7 +311,7 @@
         questionTrack = "ambulance"
       } else if (humanMsg.indexOf("no") != -1) {
         computerMsg = "If you say so..."
-        questionTrack = "sad"
+        questionTrack = "5og"
       } else {
         genericResponse()
       }
