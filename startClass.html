@@ -71,7 +71,7 @@
 </head>
 
 <body>
-  <img src="https://i.imgur.com/WcnPlLp.png" <!-- <h1></h1>
+  <img src="https://i.imgur.com/WcnPlLp.png">
   <p id="computer">Hi, how are you today?</p>
   <input type="text" placeholder="Type your response" id="human">
   <button type="button" name="button" id="button">Enter</button>
@@ -139,27 +139,27 @@
         case "salad":
           saladAnalysis()
           break
-          case "sike":
-            sikeAnalysis()
-            break
-            case "point":
-              pointAnalysis()
-              break
-              case "orange":
-                orangeAnalysis()
-                break
-                case "orange2":
-                  orange2Analysis()
-                  break
-                  case "orange3":
-                    orange3Analysis()
-                    break
-                    case "orange4":
-                      orange4Analysis()
-                      break
-        //   case "extrafood":
-        //     extrafoodAnalysis()
-        //     break
+        case "sike":
+          sikeAnalysis()
+          break
+        case "point":
+          pointAnalysis()
+          break
+        case "orange":
+          orangeAnalysis()
+          break
+        case "orange2":
+          orange2Analysis()
+          break
+        case "orange3":
+          orange3Analysis()
+          break
+        case "orange4":
+          orange4Analysis()
+          break
+          //   case "extrafood":
+          //     extrafoodAnalysis()
+          //     break
 
         default:
           genericResponse()
@@ -261,6 +261,9 @@
       if (humanMsg.indexOf("yes") != -1) {
         computerMsg = "Good point."
         questionTrack = "point"
+        setTimeout(killGame, 2000)
+        button.className = 'displayNone'
+        human.className = 'displayNone'
       } else if (humanMsg.indexOf("no") != -1) {
         computerMsg = "bow down to your leader"
         questionTrack = "steak"
@@ -275,7 +278,9 @@
         questionTrack = "virus"
       } else if (humanMsg.indexOf("no") != -1) {
         computerMsg = "I dont believe you"
-        questionTrack = "sick"
+        setTimeout(killGame, 1000)
+        button.className = 'displayNone'
+        human.className = 'displayNone'
       } else {
         genericResponse()
       }
@@ -288,6 +293,7 @@
       } else if (humanMsg.indexOf("no") != -1) {
         computerMsg = "are you sure?"
         questionTrack = "sure"
+        killGame(5000)
       } else {
         genericResponse()
       }
@@ -297,9 +303,11 @@
       if (humanMsg.indexOf("yes") != -1) {
         computerMsg = "I don't believe you"
         questionTrack = "believe"
+        killGame(5000)
       } else if (humanMsg.indexOf("no") != -1) {
         computerMsg = "Im out. peace"
         questionTrack = "peace"
+        killGame(5000)
       } else {
         genericResponse()
       }
@@ -309,9 +317,12 @@
       if (humanMsg.indexOf("yes") != -1) {
         computerMsg = "do it yourself."
         questionTrack = "ambulance"
+        setTimeout(killGame, 12000)
+
       } else if (humanMsg.indexOf("no") != -1) {
         computerMsg = "If you say so..."
         questionTrack = "5og"
+        setTimeout(killGame, 2000)
       } else {
         genericResponse()
       }
