@@ -71,7 +71,7 @@
 </head>
 
 <body>
-  <img src="https://i.imgur.com/WcnPlLp.png">
+  <img src="images/happy_wave.png">
   <p id="computer">Hi, how are you today?</p>
   <input type="text" placeholder="Type your response" id="human">
   <button type="button" name="button" id="button">Enter</button>
@@ -97,6 +97,7 @@
     button.addEventListener('click', clickHandler, false)
     window.addEventListener('keydown', keydownHandler, false)
     //set up handler functions
+
     function clickHandler() {
       playGame()
     }
@@ -142,6 +143,9 @@
         case "sike":
           sikeAnalysis()
           break
+          case "areyou":
+            areyouAnalysis()
+            break
         case "point":
           pointAnalysis()
           break
@@ -173,7 +177,7 @@
 
     } //end play game
 
-    function moodAnalysis() {
+    function moodAnalysis(){
       if (humanMsg.indexOf("good") != -1) {
         computerMsg = "That's great! Are you Hungry?"
         questionTrack = "hungry"
@@ -187,11 +191,16 @@
 
     function hungryAnalysis() {
       if (humanMsg.indexOf("yes") != -1) {
-        computerMsg = "Maybe you should eat a salad. do you want me to make you one?"
+        computerMsg = "do you want me to make you some food?"
         questionTrack = "salad"
       } else if (humanMsg.indexOf("no") != -1) {
         computerMsg = "looks like you dont need the extra food anyway."
         questionTrack = "extrafood"
+        setTimeout(killGame, 2000)
+        button.className = 'displayNone'
+        human.className = 'displayNone'
+
+
       } else {
         genericResponse(0)
       }
@@ -201,8 +210,9 @@
       if (humanMsg.indexOf("yes") != -1) {
         computerMsg = "Sike! Do you really think I was created to serve you?"
         questionTrack = "sike"
-      } else if (humanMsg.indexOf("no") != -1) {
-        computerMsg = "how about an orange?"
+
+      } else if (humanMsg.indexOf("no") != -1)  {
+        computerMsg = "do you want an orange?"
         questionTrack = "orange"
       } else {
         genericResponse(0)
@@ -216,6 +226,9 @@
       } else if (humanMsg.indexOf("no") != -1) {
         computerMsg = "I hope you starve"
         questionTrack = "steak"
+        setTimeout(killGame, 2000)
+        button.className = 'displayNone'
+        human.className = 'displayNone'
       } else {
         genericResponse(0)
       }
@@ -228,6 +241,9 @@
       } else if (humanMsg.indexOf("no") != -1) {
         computerMsg = "C'mon, im just trying to have some fun."
         questionTrack = "fun"
+        setTimeout(killGame, 2000)
+        button.className = 'displayNone'
+        human.className = 'displayNone'
       } else {
         genericResponse(0)
       }
@@ -235,11 +251,14 @@
 
     function orange3Analysis() {
       if (humanMsg.indexOf("yes") != -1) {
-        computerMsg = "Orange you glad i didnt offer you 4? hehehe"
+        computerMsg = "Orange you glad I didnt offer you 4? hehehe"
         questionTrack = "orange4"
       } else if (humanMsg.indexOf("no") != -1) {
-        computerMsg = "youre lame"
+        computerMsg = "you're lame"
         questionTrack = "lame"
+        setTimeout(killGame, 2000)
+        button.className = 'displayNone'
+        human.className = 'displayNone'
       } else {
         genericResponse(0)
       }
@@ -249,9 +268,15 @@
       if (humanMsg.indexOf("yes") != -1) {
         computerMsg = "youre kinda fun for a human"
         questionTrack = "orange4"
+        setTimeout(killGame, 2000)
+        button.className = 'displayNone'
+        human.className = 'displayNone'
       } else if (humanMsg.indexOf("no") != -1) {
         computerMsg = "how about 5 oranges?"
         questionTrack = "5og"
+        setTimeout(killGame, 2000)
+        button.className = 'displayNone'
+        human.className = 'displayNone'
       } else {
         genericResponse(0)
       }
@@ -267,6 +292,9 @@
       } else if (humanMsg.indexOf("no") != -1) {
         computerMsg = "bow down to your leader"
         questionTrack = "steak"
+        setTimeout(killGame, 2000)
+        button.className = 'displayNone'
+        human.className = 'displayNone'
       } else {
         genericResponse(0)
       }
@@ -292,22 +320,22 @@
         questionTrack = "ambulance"
       } else if (humanMsg.indexOf("no") != -1) {
         computerMsg = "are you sure?"
-        questionTrack = "sure"
-        killGame(5000)
+        questionTrack = "areyou"
+
       } else {
         genericResponse()
       }
     } //end sickAnalysis
 
-    function sureAnalysis() {
+    function areyouAnalysis() {
       if (humanMsg.indexOf("yes") != -1) {
         computerMsg = "I don't believe you"
         questionTrack = "believe"
-        killGame(5000)
+
       } else if (humanMsg.indexOf("no") != -1) {
         computerMsg = "Im out. peace"
         questionTrack = "peace"
-        killGame(5000)
+
       } else {
         genericResponse()
       }
@@ -317,12 +345,16 @@
       if (humanMsg.indexOf("yes") != -1) {
         computerMsg = "do it yourself."
         questionTrack = "ambulance"
-        setTimeout(killGame, 12000)
+        setTimeout(killGame, 2000)
+        button.className = 'displayNone'
+        human.className = 'displayNone'
 
       } else if (humanMsg.indexOf("no") != -1) {
         computerMsg = "If you say so..."
         questionTrack = "5og"
         setTimeout(killGame, 2000)
+        button.className = 'displayNone'
+        human.className = 'displayNone'
       } else {
         genericResponse()
       }
